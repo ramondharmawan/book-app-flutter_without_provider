@@ -6,6 +6,8 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import '../models/book_list_response.dart';
 
@@ -160,7 +162,18 @@ class _DetailBookPageState extends State<DetailBookPage> {
                         style: ElevatedButton.styleFrom(
                             //fixedSize: Size(double.infinity, 50),
                             ),
-                        onPressed: () {},
+                        onPressed: () async {
+                          print("url");
+                          Uri uri = Uri.parse(detailBook!.url!);
+                          try {
+                            (await canLaunchUrl(uri))
+                                ? launchUrl(uri)
+                                : print("Tidak Berhasil Naviagasi");
+                          } catch (e) {
+                            print("error");
+                            //print(e);
+                          }
+                        },
                         child: Text("BUY"),
                       ),
                     ),

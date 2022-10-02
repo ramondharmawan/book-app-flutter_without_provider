@@ -6,6 +6,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 
 class BookListPage extends StatefulWidget {
   const BookListPage({super.key});
@@ -15,7 +16,6 @@ class BookListPage extends StatefulWidget {
 }
 
 class _BookListPageState extends State<BookListPage> {
-  // variable yang dapat diakses darimanapun
   BookListResponse? bookList;
 
   fetchBookApi() async {
@@ -28,7 +28,7 @@ class _BookListPageState extends State<BookListPage> {
     if (response.statusCode == 200) {
       final jsonBookList = jsonDecode(response.body);
       bookList = BookListResponse.fromJson(jsonBookList);
-      setState(() {});
+      setState(() {}); //ini diganti dengan yang dibawah
     }
   }
 
@@ -36,7 +36,7 @@ class _BookListPageState extends State<BookListPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    fetchBookApi();
+    fetchBookApi(); // ditambahkan !(null safety karena BookController? -> boleh null)
   }
 
   @override

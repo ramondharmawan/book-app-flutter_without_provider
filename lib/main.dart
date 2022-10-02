@@ -1,5 +1,7 @@
+import 'package:book_app/controllers/book_controller.dart';
 import 'package:book_app/views/book_list_page.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
