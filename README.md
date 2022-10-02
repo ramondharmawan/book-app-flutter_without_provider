@@ -1,6 +1,6 @@
 # book_app
 
-A new Flutter project.
+A new Book app Flutter project without provider.
 
 ## Getting Started
 
